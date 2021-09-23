@@ -1,11 +1,11 @@
 import React from 'react';
-import Quantidade from './components/Quantidade';
+import Routes from "./Routes";
 
 function App() {  
 
   return (
     <div>
-      <Quantidade />
+      <Routes />
     </div>
   );
 }
