@@ -1,9 +1,11 @@
 import React from 'react';
+import Quantidade from './components/Quantidade';
 
-function App() {
+function App() {  
+
   return (
-    <div className="App">
-      
+    <div>
+      <Quantidade />
     </div>
   );
 }
