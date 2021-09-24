@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const baseUrl = "https://opentdb.com/api.php?amount="
 
-export const BuscaQuestoes = (quantidade) => {
+export const BuscaQuestoes = (quantidade, retorno) => {
   axios.get(baseUrl + quantidade).then(response => {
-    return response
+    retorno(response.data.results);
   }).catch(error => {
-    return error
+    console.log(error)
+    retorno(error);
   })
 }

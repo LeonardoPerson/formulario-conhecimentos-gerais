@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ConfirmaTeste = () => {
+const ConfirmaTeste = () => {  
 
-  return(
-    <div>Deseja iniciar o teste?</div>
+  return (
+    <div>
+      <Link to="/questoes">Start</Link>
+      <Link to="/">Cancel</Link>
+    </div>
   )
 }
 
