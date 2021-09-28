@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useResult } from '../providers/Store';
 import { Redirect } from 'react-router-dom';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -9,6 +9,8 @@ const Quantidade = () => {
   const { quantidade, setQuantidade } = useResult();
   const [prosseguir, setProsseguir] = useState(false);
   const limiteDigitos = 2;
+
+  console.log(quantidade)
 
   const isNumber = (n) => {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -45,33 +47,35 @@ const Quantidade = () => {
   })
 
 
-  //Nesse componente podemos mandar as respostas das questões para o localStorage
   return (
-    <div>
-      <div>Questões de conhecimentos gerais</div>
+    <div className="app">
+      <div>General knowledge questions</div>
       <Form onSubmit={formik.handleSubmit}>
         <Row>
-          <Col md={2} sm={4} xs={6}>
-            <Form.Group>
-              <Form.Label>Escolha uma quantidade de questões.</Form.Label>
-              <Form.Control
-                type="text"
-                name="quantidade"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={mascaraCampoTexto(formik.values.quantidade)}
-                maxLength={limiteDigitos} />
-
+          <Col md={12} sm={12} xs={12}>
+            <Form.Group className="inputNumber">
+              <Form.Label>Choose a number of questions.</Form.Label>
+              <Col md={6} sm={6} xs={8}>
+                <Form.Control
+                  type="text"
+                  name="quantidade"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={mascaraCampoTexto(formik.values.quantidade)}
+                  maxLength={limiteDigitos} />
+              </Col>
+              <div className="errorContainer">
               {formik.errors.quantidade && formik.touched.quantidade ? (
-                <div>{formik.errors.quantidade}</div>
+                <div className="errorMessage">{formik.errors.quantidade}</div>
               ) : null}
+              </div>
             </Form.Group>
           </Col>
         </Row>
         <Row>
-          <Col md={6} sm={4} xs={6}>
+          <Col md={12} sm={12} xs={12}> 
             <button type="submit" >
-              Confirmar
+              Confirm
             </button>
           </Col>
         </Row>
